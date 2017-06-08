@@ -5,9 +5,9 @@ namespace CSharpInDepthP1
     public class Product
     {
         public string Name { get; private set; }
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
-        public Product(string name, decimal price)
+        public Product(string name, decimal? price = null)
         {
             Name = name;
             Price = price;
@@ -24,7 +24,8 @@ namespace CSharpInDepthP1
                 new Product() { Name = "SalihP", Price = 22m },
                 new Product(name: "SabanP", price: 13m),
                 new Product() { Name = "SinanP", Price = 12m },
-                new Product(name: "SabanP", price: 155m)
+                new Product(name: "SabanP", price: 155m),
+                new Product("SejoK")
             };
         }
 
