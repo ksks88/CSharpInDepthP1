@@ -43,6 +43,19 @@ namespace CSharpInDepthP1
         delegate void PrintLine(Product p);
         delegate int CompareProducts(Product x, Product y);
 
+        public event EventHandler MyEvent
+        {
+            add
+            {
+                Console.WriteLine("add operation");
+            }
+
+            remove
+            {
+                Console.WriteLine("remove operation");
+            }
+        }
+
         CompareProducts ProductsDelegate { get; set; }
         
         static void Main(string[] args)
@@ -98,8 +111,18 @@ namespace CSharpInDepthP1
 
             Console.WriteLine("===================================================\n");
 
+            Console.WriteLine("=======================EVENTS======================\n");
+
+            Program t = new Program();
+
+            t.MyEvent += new EventHandler(t.DoNothing);
+            t.MyEvent -= null;
 
             Console.Read();
+        }
+
+        void DoNothing(object sender, EventArgs e)
+        {
         }
         static void WriteLine(Product p)
         {
